@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     String[] imageList;
     Button Next_button, Prev_button;
 
-    int i = 0;
+    int i ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         Next_button = findViewById(R.id.Next_button);
         Prev_button = findViewById(R.id.Prev_button);
 
+        // ListImg => addImage.xml
         imageList = getResources().getStringArray(R.array.listImg);
 
 
@@ -35,7 +36,9 @@ public class MainActivity extends AppCompatActivity {
                 i ++ ;
 
                 if(i == imageList.length){
-                    i = 0;
+
+                    i = imageList.length -1 ;
+                    //i = 0; lap
                     Picasso.get().load(imageList[i]).into(imageView);
 
                 }else{
@@ -47,8 +50,9 @@ public class MainActivity extends AppCompatActivity {
         Prev_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                i -=1;
+                i --;
                 if(i < 0){
+                   // i = imageList.length -1; lap
                     i = 0;
                     Picasso.get().load(imageList[i]).into(imageView);
                 }else{
