@@ -13,8 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView imageView;
     String[] imageList;
-    Button Next_button, Prev_button;
-
+    Button Forward_button, Backward_button;
     int i ;
 
     @Override
@@ -22,23 +21,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         imageView = findViewById(R.id.imgView);
-        Next_button = findViewById(R.id.Next_button);
-        Prev_button = findViewById(R.id.Prev_button);
-
         // ListImg => addImage.xml
         imageList = getResources().getStringArray(R.array.listImg);
-
-
         Picasso.get().load(imageList[i]).into(imageView);
-        Next_button.setOnClickListener(new View.OnClickListener() {
+        Forward_button = findViewById(R.id.Forward_button);
+        Forward_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 i ++ ;
-
                 if(i == imageList.length){
 
-                    i = imageList.length -1 ;
-                    //i = 0; lap
+                    i = imageList.length -1;
+                    //i = 0;
                     Picasso.get().load(imageList[i]).into(imageView);
 
                 }else{
@@ -47,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Prev_button.setOnClickListener(new View.OnClickListener() {
+        Backward_button = findViewById(R.id.Backward_button);
+        Backward_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 i --;
